@@ -1,18 +1,66 @@
 <meta charset="UTF-8">
 <script>
     /*
-    //PROBLEMA: Faça um script que leia 2 números e em seguida pergunte ao usuário qual operação ele deseja realizar. O resultado da operação deve ser acompanhado de uma frase que diga se o número é:
+    //PROBLEMA: Faça um script que leia 2 números e em seguida pergunte ao usuário qual operação ele deseja realizar. 
+    O resultado da operação deve ser acompanhado de uma frase que diga se o número é:
     - par ou ímpar;
     - positivo ou negativo;
     - inteiro ou decimal.
     */
 
-    //ENTRADA
+    const numero1 = Number(prompt("Digite o primeiro número:").replace(",",".").trim());
+    const numero2 = Number(prompt("Digite outro número:").replace(",",".").trim());
 
+    const operacao = prompt("Qual operação você deseja realizar? (+, -, *, /)");
 
-    //PROCESSAMENTO
+    let resultado;
+    let frase;
 
-    
-    //SAÍDA
+    switch (operacao) {
+        case "+":
+            resultado = numero1 + numero2;
+            break;
+        case "-":
+            resultado = numero1 - numero2;
+            break;
+        case "*":
+            resultado = numero1 * numero2;
+            break;
+        case "/":
+            resultado = (numero1 / numero2).toFixed(2);
+            break;
+        default:
+            alert(`Operação inválida.`);
+            break;
+    }
+
+    switch (Number.isInteger(resultado)) {
+        case true:
+            frase = `O resultado da operação é ${resultado}. O número é inteiro.`;
+            break;
+        case false:
+            frase = `O resultado da operação é ${resultado}. O número é decimal.`;
+            break;
+    }
+
+    switch (resultado % 2) {
+        case 0:
+            frase += " O número é par.";
+            break;
+        default:
+            frase += " O número é ímpar.";
+            break;
+    }
+
+    switch (resultado >= 0) {
+        case true:
+            frase += " O número é positivo.";
+            break;
+        case false:
+            frase += " O número é negativo.";
+            break;
+    }
+
+    alert(frase);
 
 </script>
